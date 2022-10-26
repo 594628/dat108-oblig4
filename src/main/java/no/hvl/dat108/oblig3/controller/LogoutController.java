@@ -4,6 +4,7 @@ import no.hvl.dat108.oblig3.utils.LoginUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,7 +14,7 @@ public class LogoutController {
     @Value("${url.loginURL}")   private String LOGIN_URL;
 
     @GetMapping("logout")
-    public String logout(HttpSession session){
+    public String logout(HttpSession session, @RequestParam("hiddenLogout") String hiddenLogout){
         LoginUtil.logoutUser(session);
         return LOGOUT_URL;
     }

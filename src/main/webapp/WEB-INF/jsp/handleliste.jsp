@@ -41,6 +41,7 @@
 
 <form action="logout" method="get">
     <fieldset>
+        <input type="hidden" name="hiddenLogout" value="hiddenLogout"/>
         <p><input type="submit" value="Logg ut" /></p>
     </fieldset>
 </form>

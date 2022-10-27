@@ -20,9 +20,28 @@ public class LoginController {
     @Value("${Password}") private String PASSWORD;
 
     @GetMapping
+    public String getLoginHome(Model model,
+                           HttpSession session,
+                           RedirectAttributes ra){
+        if (LoginUtil.isUserLoggedIn(session)){
+            return "redirect:" + HANDLE_URL;
+        }
+        return LOGIN_URL;
+    }
+    @GetMapping(value = "login")
     public String getLogin(Model model,
                            HttpSession session,
                            RedirectAttributes ra){
+        if (LoginUtil.isUserLoggedIn(session)){
+            return "redirect:" + HANDLE_URL;
+        }
+        return LOGIN_URL;
+    }
+
+    @GetMapping(value = "incorrect_password")
+    public String getLoginWrongPass(Model model,
+                               HttpSession session,
+                               RedirectAttributes ra){
         if (LoginUtil.isUserLoggedIn(session)){
             return "redirect:" + HANDLE_URL;
         }
@@ -34,7 +53,7 @@ public class LoginController {
                            HttpServletRequest request, RedirectAttributes ra) {
         if (!password.equals(PASSWORD)){
             ra.addFlashAttribute(INVALID_PASSWORD_MESSAGE);
-            return "/";
+            return "redirect:" + LOGIN_URL;
         }
         LoginUtil.loginUser(request);
         return "redirect:" + HANDLE_URL;

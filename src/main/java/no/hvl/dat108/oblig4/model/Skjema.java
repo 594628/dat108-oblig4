@@ -1,12 +1,9 @@
-package no.hvl.dat108.oblig3.model;
+package no.hvl.dat108.oblig4.model;
 
-import no.hvl.dat108.oblig3.utils.PassordUtil;
-import no.hvl.dat108.oblig3.utils.Validator;
-import java.security.NoSuchAlgorithmException;
+import no.hvl.dat108.oblig4.utils.PassordUtil;
+import no.hvl.dat108.oblig4.utils.Validator;
 //import javax.ejb.EJB;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.xml.bind.DatatypeConverter;
 
 public class Skjema {
 

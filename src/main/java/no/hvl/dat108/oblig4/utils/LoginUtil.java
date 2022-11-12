@@ -1,4 +1,4 @@
-package no.hvl.dat108.oblig3.utils;
+package no.hvl.dat108.oblig4.utils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

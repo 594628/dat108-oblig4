@@ -11,21 +11,38 @@ public class Deltager {
     private String kjonn;
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer mobil;
-    private String pass;
+    private String mobil;
+    private String passordHash;
+    private String passordSalt;
+
+    public Deltager() {
+
+    }
 
 
     /**
-     * @return the pass
+     * @return the passordSalt
      */
-    public String getPass() {
-        return pass;
+    public String getPassordSalt() {
+        return passordSalt;
     }
     /**
-     * @param pass the pass to set
+     * @param passordSalt the pass to set
      */
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setPassordSalt(String passordSalt) {
+        this.passordSalt = passordSalt;
+    }
+    /**
+     * @return the passordHash
+     */
+    public String getPassordHash() {
+        return passordHash;
+    }
+    /**
+     * @param passordHash the pass to set
+     */
+    public void setPassordHash(String passordHash) {
+        this.passordHash = passordHash;
     }
     /**
      * @return the kjonn
@@ -47,23 +64,21 @@ public class Deltager {
         return fornavn;
     }
 
-    public Deltager() {
-
-    }
-
     /**
      * @param fornavn
      * @param etternavn
      * @param kjonn
      * @param mobil
-     * @param pass
+     * @param passordHash
+     * @param passordSalt
      */
-    public Deltager(String fornavn, String etternavn, String kjonn, Integer mobil, String pass) {
+    public Deltager(String fornavn, String etternavn, String kjonn, String mobil, String passordHash, String passordSalt) {
         this.fornavn = fornavn;
         this.etternavn = etternavn;
         this.kjonn = kjonn;
         this.mobil = mobil;
-        this.pass = pass;
+        this.passordHash = passordHash;
+        this.passordSalt = passordSalt;
     }
     /**
      * @param fornavn the fornavn to set
@@ -86,13 +101,13 @@ public class Deltager {
     /**
      * @return the mobil
      */
-    public Integer getMobil() {
+    public String getMobil() {
         return mobil;
     }
     /**
      * @param mobil the mobil to set
      */
-    public void setMobil(Integer mobil) {
+    public void setMobil(String mobil) {
         this.mobil = mobil;
     }
 

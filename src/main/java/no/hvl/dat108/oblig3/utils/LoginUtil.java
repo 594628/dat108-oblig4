@@ -17,7 +17,7 @@ public class LoginUtil {
 
         HttpSession session = request.getSession();
         session.setMaxInactiveInterval(MAX_INTERACTIVE_INTERVAL);
-        session.setAttribute("handleliste", new Handleliste());
+//        session.setAttribute("handleliste", new Handleliste());
 
         isLoggedIn = true;
     }

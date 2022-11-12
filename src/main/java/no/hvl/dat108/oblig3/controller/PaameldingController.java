@@ -14,4 +14,10 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class PaameldingController {
 
+    @PostMapping(value = "Meld meg paa")
+    public String meldPaa(Model model, HttpSession session){
+
+
+        return "paamelding";
+    }
 }

@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!-- saved from url=(0032)http://localhost:8080/paamelding -->
 <html lang="no"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link href="simple.css" rel="stylesheet" type="text/css">
@@ -34,9 +38,14 @@
             <input id="passordRepetert" name="passordRepetert" title="..." pattern=".*" placeholder="Gjenta passord" type="password" required="required" value="">
             
             
-			<label for="kjonn">Kjønn:</label> 
-			<input id="kjonn1" name="kjonn" checked="checked" type="radio" value="mann">mann
-			<input id="kjonn2" name="kjonn" type="radio" value="kvinne">kvinne
+<%--			<label for="kjonn">Kjønn:</label> --%>
+<%--			<input id="kjonn1" name="kjonn" checked="checked" type="radio" value="mann">mann--%>
+<%--			<input id="kjonn2" name="kjonn" type="radio" value="kvinne">kvinne--%>
+
+			<p>Kjønn:
+				<input type="radio" id="man" name="gender" value="Mann"/> <label for="man">Mann</label>
+				<input type="radio" id="woman" name="gender" value="Kvinne"> <label for="woman">Kvinne</label>
+			</p>
 			     
 			<br><br><p><input type="submit" value="Meld meg paa"></p>
 		</fieldset>

@@ -9,9 +9,11 @@
 	<h2>Påmeldingsbekreftelse</h2>
 	<p>Påmeldingen er mottatt for</p>
 	<p>
-		&nbsp;&nbsp;&nbsp;Pål<br>
-		&nbsp;&nbsp;&nbsp;Olsen<br>
-		&nbsp;&nbsp;&nbsp;12345676<br> &nbsp;&nbsp;&nbsp;mann
+		&nbsp;&nbsp;${deltager.fornavn}<br>
+		&nbsp;&nbsp;${deltager.etternavn}<br>
+		&nbsp;&nbsp;${deltager.kjonn}<br>
+		  ${deltager.mobil}<br>
+
 	</p>
 	<a href="http://localhost:8080/deltagerliste">Gå til deltagerlisten</a>
 

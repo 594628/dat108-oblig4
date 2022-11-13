@@ -16,4 +16,12 @@ public class LoginController {
     public String login(Model model){
         return loginURL;
     }
+
+    @GetMapping(value = "${url.registerURL}")
+    public String paamelding(Model model) {return registerURL;}
+
+    @GetMapping(value = "${url.logoutURL")
+    public String loggeut(Model model) {return logoutURL;}
+
+
 }

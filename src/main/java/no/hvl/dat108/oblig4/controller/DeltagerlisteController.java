@@ -21,6 +21,6 @@ public class DeltagerlisteController {
     public String loggeut(Model model) {return loginURL;}
 
     @GetMapping(value = "${url.listeURL")
-    public String gjestelise(Model model) {return listeURL};
+    public String gjestelise(Model model) {return listeURL;};
 
 }

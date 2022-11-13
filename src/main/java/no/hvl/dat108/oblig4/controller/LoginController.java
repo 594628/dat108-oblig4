@@ -1,6 +1,7 @@
 package no.hvl.dat108.oblig4.controller;
 
 import no.hvl.dat108.oblig4.utils.LoginUtil;
+import no.hvl.dat108.oblig4.utils.PassordUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,11 +31,11 @@ public class LoginController {
     @PostMapping(value = "login")
     public String tryLogin(@Valid Model model, @RequestParam(name = "password") String password,
                            HttpServletRequest request, RedirectAttributes ra) {
-        if (!password.equals()){
+        if (!PassordUtil.validerMedSalt(password, databaseSalt, databasePassord)){
             ra.addFlashAttribute();
             return "/";
         }
         LoginUtil.loginUser(request);
-        return "redirect:" + loginURL;
+       return "redirect:" + loginURL;
     }
 }

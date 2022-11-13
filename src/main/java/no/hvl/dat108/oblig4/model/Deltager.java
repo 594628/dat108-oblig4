@@ -8,7 +8,10 @@ import javax.validation.constraints.Pattern;
 @Entity
 @Table(schema = "dat108oblig4", name = "deltager")
 public class Deltager {
+
+    @Pattern(regexp = "^[A-Z][a-z_-]{2,20}$")
     private String fornavn;
+    @Pattern(regexp = "^[A-Z][a-z_-]{2,20}$")
     private String etternavn;
     private String kjonn;
     @Id

@@ -1,6 +1,8 @@
 package no.hvl.dat108.oblig4.model;
 
 import javax.persistence.*;
+import javax.validation.*;
+import javax.validation.constraints.Pattern;
 
 
 @Entity
@@ -11,9 +13,16 @@ public class Deltager {
     private String kjonn;
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Pattern(regexp = "^[0-9]{8}$")
     private String mobil;
     private String passordHash;
     private String passordSalt;
+
+
+    @Override
+    public String toString() {
+        return "Deltager " + fornavn + " " + etternavn + " er nå registrert med mobilnummer " + mobil + ".";
+    }
 
     public Deltager() {
 

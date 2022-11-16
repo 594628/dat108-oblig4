@@ -13,6 +13,7 @@ public class Deltager {
     private String fornavn;
     @Pattern(regexp = "^[A-Z][a-z_-]{2,20}$")
     private String etternavn;
+    @Pattern(regexp = "\\b(?=\\w{4,6}\\b)\\w(mann|kvinne)\\w*")
     private String kjonn;
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

@@ -1,79 +1,43 @@
 package no.hvl.dat108.oblig4.model;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.ObjectMapper;
-//import org.json.JSONObject;
-//import org.apache.tomcat.util.json.JSONParser;
-import com.fasterxml.jackson.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+import java.io.*;
+import java.util.*;
 
 public class DeltagerJSON implements DeltakerDAO{
-    ObjectMapper mapper = new ObjectMapper();
+//    ObjectMapper mapper = new ObjectMapper();
     JSONObject jsonObject = new JSONObject();
-
-
-//    public static void main(String[] args) {
-//
-//        JSONParser parser = new JSONParser();
-//
-//        try (Reader reader = new FileReader("c:\\projects\\test.json")) {
-//
-//            JSONObject jsonObject = (JSONObject) parser.parse(reader);
-//            System.out.println(jsonObject);
-//
-//            String name = (String) jsonObject.get("name");
-//            System.out.println(name);
-//
-//            long age = (Long) jsonObject.get("age");
-//            System.out.println(age);
-//
-//            // loop array
-//            JSONArray msg = (JSONArray) jsonObject.get("messages");
-//            Iterator<String> iterator = msg.iterator();
-//            while (iterator.hasNext()) {
-//                System.out.println(iterator.next());
-//            }
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
+    String fileName = "./test.json";
 
     @Override
     public Deltager get(String mobil) {
         JSONParser parser = new JSONParser();
+        checkIfJSON();
 
         try{
-            Reader reader = new FileReader("./test.json");
+            Reader reader = new FileReader(fileName);
             jsonObject = (JSONObject) parser.parse(reader);
             JSONArray array = (JSONArray) jsonObject.get("deltagere");
+            if (array == null){
+                return null;
+            }
             reader.close();
-            System.out.println(jsonObject);
-            System.out.println(array);
+//            System.out.println(jsonObject);
+//            System.out.println(array);
 
             Deltager deltaker = null;
-            Iterator<Deltager> iterator = array.iterator();
+            Iterator<JSONObject> iterator = array.iterator();
             while (deltaker == null && iterator.hasNext()){
-                if (iterator.next().getMobil() == mobil){
-                    deltaker = iterator.next();
+                Deltager c = getDeltagerJSON(iterator.next());
+                if (c.getMobil() == mobil){
+                    deltaker = c;
                 }
             }
-            System.out.println(deltaker);
+//            System.out.println(deltaker);
 
             return deltaker;
         }
@@ -87,16 +51,24 @@ public class DeltagerJSON implements DeltakerDAO{
     @Override
     public List<Deltager> getAll() {
         JSONParser parser = new JSONParser();
+        checkIfJSON();
 
         try{
-            Reader reader = new FileReader("./test.json");
+            Reader reader = new FileReader(fileName);
             jsonObject = (JSONObject) parser.parse(reader);
             JSONArray array = (JSONArray) jsonObject.get("deltagere");
+            if (array == null){
+                return null;
+            }
             reader.close();
 //            System.out.println(jsonObject);
 
             List<Deltager> deltagere = new ArrayList<Deltager>();
-            deltagere.addAll(array);
+
+            Iterator<JSONObject> iterator = array.iterator();
+            while (iterator.hasNext()){
+                deltagere.add(getDeltagerJSON(iterator.next()));
+            }
 
             return deltagere;
         }
@@ -107,40 +79,27 @@ public class DeltagerJSON implements DeltakerDAO{
         return null;
     }
 
-//    public static void main(String[] args) {
-//
-//        JSONObject obj = new JSONObject();
-//        obj.put("name", "mkyong.com");
-//        obj.put("age", 100);
-//
-//        JSONArray list = new JSONArray();
-//        list.add("msg 1");
-//        list.add("msg 2");
-//        list.add("msg 3");
-//
-//        obj.put("messages", list);
-//
-//        try (FileWriter file = new FileWriter("c:\\projects\\test.json")) {
-//            file.write(obj.toJSONString());
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        System.out.print(obj);
-//
-//    }
-
     @Override
     public void save(Deltager deltager) {
         JSONParser parser = new JSONParser();
+        checkIfJSON();
+        if (deltager == get(deltager.getMobil())){
+            return;
+        }
 
         try{
-            Reader reader = new FileReader("./test.json");
+            Reader reader = new FileReader(fileName);
             jsonObject = (JSONObject) parser.parse(reader);
             JSONArray array = (JSONArray) jsonObject.get("deltagere");
+            if (array == null){
+                array = new JSONArray();
+            }
             reader.close();
 
-            array.add(deltager);
+            JSONObject jsonDeltager = new JSONObject();
+            jsonDeltager.put(deltager.getMobil(),setDeltakerJSON(deltager));
+
+            array.add(jsonDeltager);
             jsonObject = new JSONObject();
 
             jsonObject.put("deltagere", array);
@@ -152,6 +111,76 @@ public class DeltagerJSON implements DeltakerDAO{
             e.printStackTrace();
         }
 //        jsonObject = new JSONObject();
+    }
+
+    private JSONObject setDeltakerJSON(Deltager deltager){
+        JSONObject delt = new JSONObject();
+        delt.put("fornavn", deltager.getFornavn());
+        delt.put("etternavn", deltager.getEtternavn());
+        delt.put("Kjonn", deltager.getKjonn());
+        delt.put("Mobil", deltager.getMobil());
+        delt.put("hash", deltager.getPassordHash());
+        delt.put("salt", deltager.getPassordSalt());
+
+        return delt;
+
+//        JSONObject fnavn = new JSONObject();
+//        JSONObject enavn = new JSONObject();
+//        JSONObject kjonn = new JSONObject();
+//        JSONObject mob = new JSONObject();
+//        JSONObject hash = new JSONObject();
+//        JSONObject salt = new JSONObject();
+//
+//        fnavn.put("fornavn", deltager.getFornavn());
+//        enavn.put("etternavn", deltager.getEtternavn());
+//        kjonn.put("Kjonn", deltager.getKjonn());
+//        mob.put("Mobil", deltager.getMobil());
+//        hash.put("hash", deltager.getPassordHash());
+//        salt.put("salt", deltager.getPassordSalt());
+//
+//        JSONArray array = new JSONArray();
+//        array.add(fnavn);
+//        array.add(enavn);
+//        array.add(kjonn);
+//        array.add(mob);
+//        array.add(hash);
+//        array.add(salt);
+//        return array;
+    }
+
+    private Deltager getDeltagerJSON(JSONObject jo){
+        Deltager deltager = new Deltager();
+
+        deltager.setFornavn(jo.get("fornavn").toString());
+        deltager.setEtternavn(jo.get("etternavn").toString());
+        deltager.setKjonn(jo.get("kjonn").toString());
+        deltager.setMobil(jo.get("mobil").toString());
+        deltager.setPassordSalt(jo.get("salt").toString());
+        deltager.setPassordHash(jo.get("hash").toString());
+
+        return deltager;
+    }
+
+    private void checkIfJSON(){
+        try{
+            Reader reader = new FileReader(fileName);
+            reader.close();
+        } catch (FileNotFoundException e) {
+            try {
+                FileWriter writer = new FileWriter(fileName);
+                JSONObject jo = new JSONObject();
+                jo.put("test", "test");
+                writer.write(jo.toJSONString());
+                writer.close();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+
+//            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override

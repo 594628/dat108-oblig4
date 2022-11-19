@@ -15,10 +15,18 @@ import javax.validation.Valid;
 
 @Controller
 public class LoginController {
+    // URL verdier
     @Value("${url.listURL}") private String listeURL;
     @Value("${url.loginURL}") private String loginURL;
     @Value("${url.registerURL}") private String registerURL;
     @Value("${url.logoutURL}") private String logoutURL;
+
+    // Melding verdier
+    @Value("${message.noPasswordMatch}") private String noPassMatchMsg;
+    @Value("${message.invalidPassword}") private String invalidPasswordMsg;
+    @Value("${message.requireLogin}") private String requireLoginMsg;
+    @Value("${message.logout}") private String logoutMsg;
+    @Value("${message.registeredOk}") private String registrationOkMsg;
 
     @GetMapping(value = "${url.loginURL}")
     public String login(Model model){
@@ -32,7 +40,7 @@ public class LoginController {
     public String tryLogin(@Valid Model model, @RequestParam(name = "password") String password,
                            HttpServletRequest request, RedirectAttributes ra) {
         if (!PassordUtil.validerMedSalt(password, databaseSalt, databasePassord)){
-            ra.addFlashAttribute();
+            ra.addFlashAttribute("invalidPassword", invalidPasswordMsg);
             return "/";
         }
         LoginUtil.loginUser(request);

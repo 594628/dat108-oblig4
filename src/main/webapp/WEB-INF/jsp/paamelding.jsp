@@ -5,8 +5,8 @@
 
 <!-- saved from url=(0032)http://localhost:8080/paamelding -->
 <html lang="no"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link href="simple.css" rel="stylesheet" type="text/css">
-<!-- <script src="js/myscript.js" defer></script>  -->  
+	<link href="../../../resources/static/CSS/simple.css" rel="stylesheet" type="text/css">
+	<script src="../../../resources/static/JS/validation.js" defer></script>
 	<title>Påmelding</title>
 </head>
 

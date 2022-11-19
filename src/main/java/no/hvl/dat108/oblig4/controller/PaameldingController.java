@@ -15,11 +15,18 @@ import javax.validation.Valid;
 
 @Controller
 public class PaameldingController {
+    // URL verdier
     @Value("${url.listURL}") private String listeURL;
     @Value("${url.loginURL}") private String loginURL;
     @Value("${url.registerURL}") private String registerURL;
     @Value("${url.logoutURL}") private String logoutURL;
-    @Value("${message.registeredOk}") private String SUCCESSMELDING;
+
+    // Melding verdier
+    @Value("${message.noPasswordMatch}") private String noPassMatchMsg;
+    @Value("${message.invalidPassword}") private String invalidPasswordMsg;
+    @Value("${message.requireLogin}") private String requireLoginMsg;
+    @Value("${message.logout}") private String logoutMsg;
+    @Value("${message.registeredOk}") private String registrationOkMsg;
 
     @GetMapping(value = "${url.registerURL}")
     public String paamelding(Model model) {return registerURL;}
@@ -38,7 +45,7 @@ public class PaameldingController {
             return "paamelding";
         }
         Deltager d = new Deltager();
-        ra.addFlashAttribute("success", SUCCESSMELDING);
+        ra.addFlashAttribute("success", registrationOkMsg);
 
 
         return "redirect:" + loginURL;

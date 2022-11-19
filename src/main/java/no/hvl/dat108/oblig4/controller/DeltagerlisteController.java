@@ -7,10 +7,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class DeltagerlisteController {
+    // URL verdier
     @Value("${url.listURL}") private String listeURL;
     @Value("${url.loginURL}") private String loginURL;
     @Value("${url.registerURL}") private String registerURL;
     @Value("${url.logoutURL}") private String logoutURL;
+
+    // Melding verdier
+    @Value("${message.noPasswordMatch}") private String noPassMatchMsg;
+    @Value("${message.invalidPassword}") private String invalidPasswordMsg;
+    @Value("${message.requireLogin}") private String requireLoginMsg;
+    @Value("${message.logout}") private String logoutMsg;
+    @Value("${message.registeredOk}") private String registrationOkMsg;
 
     @GetMapping
     public String standard(Model model){

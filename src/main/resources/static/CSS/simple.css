@@ -624,3 +624,15 @@ progress::-moz-progress-bar {
 progress:indeterminate::-moz-progress-bar {
   background-color: var(--accent-bg);
 }
+
+.red-border{
+  outline: 1px solid red;
+}
+
+.yellow-border{
+  outline: 1px solid orange;
+}
+
+.green-border{
+  outline: 1px solid green;
+}

@@ -39,7 +39,7 @@ public class LoginController {
     @PostMapping(value = "login")
     public String tryLogin(@Valid Model model, @RequestParam(name = "password") String password,
                            HttpServletRequest request, RedirectAttributes ra) {
-        if (!PassordUtil.validerMedSalt(password, databaseSalt, databasePassord)){
+        if (!PassordUtil.validerMedSalt(password, "2", "2")){
             ra.addFlashAttribute("invalidPassword", invalidPasswordMsg);
             return "/";
         }

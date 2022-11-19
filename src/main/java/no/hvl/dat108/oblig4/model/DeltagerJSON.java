@@ -62,6 +62,7 @@ public class DeltagerJSON implements DeltakerDAO{
             Reader reader = new FileReader("./test.json");
             jsonObject = (JSONObject) parser.parse(reader);
             JSONArray array = (JSONArray) jsonObject.get("deltagere");
+            reader.close();
             System.out.println(jsonObject);
             System.out.println(array);
 
@@ -73,7 +74,6 @@ public class DeltagerJSON implements DeltakerDAO{
                 }
             }
             System.out.println(deltaker);
-            reader.close();
 
             return deltaker;
         }
@@ -92,6 +92,7 @@ public class DeltagerJSON implements DeltakerDAO{
             Reader reader = new FileReader("./test.json");
             jsonObject = (JSONObject) parser.parse(reader);
             JSONArray array = (JSONArray) jsonObject.get("deltagere");
+            reader.close();
 //            System.out.println(jsonObject);
 
             List<Deltager> deltagere = new ArrayList<Deltager>();

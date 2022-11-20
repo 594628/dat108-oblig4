@@ -20,6 +20,7 @@ public class LoginController {
     @Value("${url.loginURL}") private String loginURL;
     @Value("${url.registerURL}") private String registerURL;
     @Value("${url.logoutURL}") private String logoutURL;
+    @Value("${url.confirmURL}") private String confirmURL;
 
     // Melding verdier
     @Value("${message.noPasswordMatch}") private String noPassMatchMsg;

@@ -1,6 +1,7 @@
 package no.hvl.dat108.oblig4.controller;
 
 import no.hvl.dat108.oblig4.model.Deltager;
+import no.hvl.dat108.oblig4.utils.LoginUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,7 @@ public class PaameldingController {
     @Value("${url.loginURL}") private String loginURL;
     @Value("${url.registerURL}") private String registerURL;
     @Value("${url.logoutURL}") private String logoutURL;
+    @Value("${url.confirmURL}") private String confirmURL;
 
     // Melding verdier
     @Value("${message.noPasswordMatch}") private String noPassMatchMsg;
@@ -34,15 +36,14 @@ public class PaameldingController {
     }
 
     @GetMapping(value = "${url.registerURL}")
-    public String paamelding(Model model) {return registerURL;}
+    public String paamelding(Model model, HttpSession session) {
+        if (LoginUtil.isUserLoggedIn(session)){
+            return "redirect:" + listeURL;
+        }
+        return registerURL;
+    }
 
-//    @GetMapping("${url.registerURL}")
-//    public String paameldingsskjema(Model model) {
-//        model.addAttribute("deltager", new Deltager());
-//        return "paamelding";
-//    }
-
-    @PostMapping("${url.listURL}")
+    @PostMapping("registerUser")
     public String registerUser(
             @Valid @ModelAttribute("deltager") Model model,
             BindingResult bindingResult, RedirectAttributes ra) {
@@ -53,7 +54,7 @@ public class PaameldingController {
         ra.addFlashAttribute("success", registrationOkMsg);
 
 
-        return "redirect:" + loginURL;
+        return "redirect:" + confirmURL;
     }
 
 

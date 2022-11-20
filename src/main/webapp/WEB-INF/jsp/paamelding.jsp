@@ -62,7 +62,7 @@
 <%--			<input type="radio" id="female" name="gender" value="F"/>--%>
 <%--			<label for="female"><span></span>Female</label>--%>
 			     
-			<br><br><p><input type="submit" value="Meld meg paa"></p>
+			<br><br><p><input type="submit" value="registerUser"></p>
 		</fieldset>
 	</form>
 

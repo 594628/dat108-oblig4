@@ -20,11 +20,6 @@ public class DeltagerlisteController {
     @Value("${message.logout}") private String logoutMsg;
     @Value("${message.registeredOk}") private String registrationOkMsg;
 
-    @GetMapping
-    public String standard(Model model){
-        return loginURL;
-    }
-
     @GetMapping(value = "${url.logoutURL}")
     public String loggout(Model model) {return loginURL;}
 

@@ -4,7 +4,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- saved from url=(0035)http://localhost:8080/deltagerliste -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="no">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link href="./css/simple.css" rel="stylesheet" type="text/css">
 	<script src="./js/validation.js" defer></script>
 	<title>Deltagerliste</title>

@@ -637,48 +637,48 @@ progress:indeterminate::-moz-progress-bar {
   outline: 1px solid green;
 }
 
-input[type="radio"] {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
+/*input[type="radio"] {*/
+/*  position: absolute;*/
+/*  opacity: 0;*/
+/*  cursor: pointer;*/
+/*}*/
 
-label {
-  position: relative;
-  cursor: pointer;
-  padding-left: 30px;
-  display: inline-block;
-  line-height: 1.6;
-  margin-right: 15px;
-}
+/*label {*/
+/*  position: relative;*/
+/*  cursor: pointer;*/
+/*  padding-left: 30px;*/
+/*  display: inline-block;*/
+/*  line-height: 1.6;*/
+/*  margin-right: 15px;*/
+/*}*/
 
-span {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 20px;
-  width: 20px;
-  background: #FFF;
-  border: 2px solid black;
-  border-radius: 50%;
-}
+/*span {*/
+/*  position: absolute;*/
+/*  left: 0;*/
+/*  top: 0;*/
+/*  height: 20px;*/
+/*  width: 20px;*/
+/*  background: #FFF;*/
+/*  border: 2px solid black;*/
+/*  border-radius: 50%;*/
+/*}*/
 
-span:after {
-  content: '';
-  position: absolute;
-  left: 5px;
-  top: 5px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: black;
-  display: none;
-}
+/*span:after {*/
+/*  content: '';*/
+/*  position: absolute;*/
+/*  left: 5px;*/
+/*  top: 5px;*/
+/*  width: 10px;*/
+/*  height: 10px;*/
+/*  border-radius: 50%;*/
+/*  background: black;*/
+/*  display: none;*/
+/*}*/
 
-input[type="radio"]:checked~span:after {
-  display: block;
-}
+/*input[type="radio"]:checked~span:after {*/
+/*  display: block;*/
+/*}*/
 
-input[type="radio"]:focus~span {
-  outline: 2px solid orange;
-}
+/*input[type="radio"]:focus~span {*/
+/*  outline: 2px solid orange;*/
+/*}*/

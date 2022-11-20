@@ -28,6 +28,11 @@ public class PaameldingController {
     @Value("${message.logout}") private String logoutMsg;
     @Value("${message.registeredOk}") private String registrationOkMsg;
 
+    @GetMapping
+    public String standard(Model model){
+        return registerURL;
+    }
+
     @GetMapping(value = "${url.registerURL}")
     public String paamelding(Model model) {return registerURL;}
 

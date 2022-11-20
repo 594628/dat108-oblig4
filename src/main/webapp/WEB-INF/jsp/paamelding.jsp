@@ -4,10 +4,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- saved from url=(0032)http://localhost:8080/paamelding -->
-<html lang="no" html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link th:href="@{/CSS/simple.css}" rel="stylesheet" type="text/css">
-	<script th:src="@{/JS/validation.js}" defer></script>
+<html lang="no">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link href="./css/simple.css" rel="stylesheet" type="text/css">
+	<script src="./js/validation.js" defer></script>
 	<title>Påmelding</title>
 </head>
 
@@ -43,10 +44,23 @@
 <%--			<input id="kjonn1" name="kjonn" checked="checked" type="radio" value="mann">mann--%>
 <%--			<input id="kjonn2" name="kjonn" type="radio" value="kvinne">kvinne--%>
 
-			<p>Kjønn:
-				<input type="radio" id="man" name="gender" value="Mann"/> <label for="man">Mann</label>
-				<input type="radio" id="woman" name="gender" value="Kvinne"> <label for="woman">Kvinne</label>
-			</p>
+			<p>Kjønn: </p>
+			<label for="man">Mann
+			<input type="radio" id="man" name="gender" value="Mann"/>
+			<span></span>
+			</label>
+
+			<label for="woman">Kvinne
+			<input type="radio" id="woman" name="gender" value="Kvinne"/>
+			<span></span>
+			</label>
+<%--			</p>--%>
+
+<%--			<input type="radio" id="male" name="gender" value="M"/>--%>
+<%--			<label for="male"><span></span>Male</label>--%>
+
+<%--			<input type="radio" id="female" name="gender" value="F"/>--%>
+<%--			<label for="female"><span></span>Female</label>--%>
 			     
 			<br><br><p><input type="submit" value="Meld meg paa"></p>
 		</fieldset>

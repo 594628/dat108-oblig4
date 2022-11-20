@@ -13,6 +13,7 @@
 </head>
 
 <body>
+
 <h2>Påmelding</h2>
 <form:form action="registerUser" method="post" class="pure-form pure-form-aligned" >
 	<fieldset>

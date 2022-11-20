@@ -25,10 +25,10 @@ public class DeltagerlisteController {
         return loginURL;
     }
 
-    @GetMapping(value = "${url.logoutURL")
-    public String loggeut(Model model) {return loginURL;}
+    @GetMapping(value = "${url.logoutURL}")
+    public String loggout(Model model) {return loginURL;}
 
-    @GetMapping(value = "${url.listeURL")
-    public String gjestelise(Model model) {return listeURL;};
+    @GetMapping(value = "${url.listURL}")
+    public String guests(Model model) {return listeURL;}
 
 }

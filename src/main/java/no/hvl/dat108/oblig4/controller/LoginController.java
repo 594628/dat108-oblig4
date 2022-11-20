@@ -33,10 +33,7 @@ public class LoginController {
         return loginURL;
     }
 
-    @GetMapping(value = "${url.registerURL}")
-    public String paamelding(Model model) {return registerURL;}
-
-    @PostMapping(value = "login")
+    @PostMapping(value = "${url.loginURL}")
     public String tryLogin(@Valid Model model, @RequestParam(name = "password") String password,
                            HttpServletRequest request, RedirectAttributes ra) {
         if (!PassordUtil.validerMedSalt(password, "2", "2")){

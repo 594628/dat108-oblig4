@@ -31,14 +31,14 @@ public class PaameldingController {
     @GetMapping(value = "${url.registerURL}")
     public String paamelding(Model model) {return registerURL;}
 
-    @GetMapping("/paameldingsskjema")
-    public String paameldingsskjema(Model model) {
-        model.addAttribute("deltager", new Deltager());
-        return "paamelding";
-    }
+//    @GetMapping("${url.registerURL}")
+//    public String paameldingsskjema(Model model) {
+//        model.addAttribute("deltager", new Deltager());
+//        return "paamelding";
+//    }
 
-    @PostMapping("/deltagerliste")
-    public String lagreDeltager(
+    @PostMapping("${url.listURL}")
+    public String registerUser(
             @Valid @ModelAttribute("deltager") Model model,
             BindingResult bindingResult, RedirectAttributes ra) {
         if(bindingResult.hasErrors()) {
@@ -52,11 +52,11 @@ public class PaameldingController {
     }
 
 
-    @PostMapping(value = "Meld meg paa")
-    public String meldPaa(Model model, HttpSession session){
-
-
-        return "paamelding";
-    }
+//    @PostMapping(value = "Meld meg paa")
+//    public String meldPaa(Model model, HttpSession session){
+//
+//
+//        return "paamelding";
+//    }
 }
 

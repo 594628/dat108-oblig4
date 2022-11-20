@@ -14,13 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class LagreDeltagerTest {
     Deltager deltager;
-    String fnavn = "Per";
-    String enavn = "Pettersen";
-    String kjonn = "Mann";
-    String mob = "80080800";
-    String hash = "HASH";
-    String salt = "SALT";
-
+    String fnavn = "Per", enavn = "Pettersen", kjonn = "Mann", mob = "80080800", hash = "HASH", salt = "SALT";
     Deltager deltager2;
     Deltager deltager3;
     DeltakerDAO saveJson = new DeltagerJSON();

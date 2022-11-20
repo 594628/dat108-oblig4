@@ -16,7 +16,24 @@
 
 <h2>Påmelding</h2>
 
-<c:out value="error"/>
+<form:form action="paamelding" method="post">
+	<fieldset>
+			<%--        <label for="mobil">--%>
+		Fornavn: <input type="text" name="fornavn">
+			<%--        <label for="passord">--%>
+		Etternavn: <input type="password" name="etternavn">
+
+		Mobil: <input type="text" name="mobil">
+
+		Passord: <input type="text" name="passord">
+
+		Repeter passord: <input type="text" name="passord">
+
+		<br><br><button type="submit" value="registerUser">Meld på</button>
+	</fieldset>
+</form:form>
+
+<%--<c:out value="error"/>
 
 <form:form action="registerUser" method="post" class="pure-form pure-form-aligned" >
 	<fieldset>
@@ -57,6 +74,6 @@
 			<button type="submit" value="Meld på">Meld på</button>
 		</div>
 	</fieldset>
-</form:form>
+</form:form>--%>
 </body>
 </html>

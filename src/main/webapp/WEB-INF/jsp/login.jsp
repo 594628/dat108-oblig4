@@ -17,9 +17,9 @@
 <form:form action="login" method="post">
     <fieldset>
 <%--        <label for="mobil">--%>
-            Mobil: <input type="text" name="mobil" placeholder="mobil">
+            Mobil:</label> <input type="text" name="mobil" placeholder="mobil">
 <%--        <label for="passord">--%>
-            Passord:<input type="password" name="passord" placeholder="passord">
+            Passord:</label> <input type="password" name="passord" placeholder="passord">
         <br><br><button type="submit" value="Login">Logg inn</button>
     </fieldset>
 </form:form>

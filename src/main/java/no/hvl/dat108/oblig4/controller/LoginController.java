@@ -5,6 +5,7 @@ import no.hvl.dat108.oblig4.model.DeltagerJSON;
 import no.hvl.dat108.oblig4.model.DeltakerDAO;
 import no.hvl.dat108.oblig4.utils.LoginUtil;
 import no.hvl.dat108.oblig4.utils.PassordUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +34,8 @@ public class LoginController {
     @Value("${message.registeredOk}") private String registrationOkMsg;
 
     // DAO
-    private DeltakerDAO dao = new DeltagerJSON();
+    @Autowired
+    private DeltakerDAO dao;
 
     @GetMapping(value = "${url.loginURL}")
     public String login(Model model){

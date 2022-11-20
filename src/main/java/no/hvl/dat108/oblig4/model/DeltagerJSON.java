@@ -1,20 +1,16 @@
 package no.hvl.dat108.oblig4.model;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
-import java.sql.SQLOutput;
 import java.util.*;
 
+@Component
 public class DeltagerJSON implements DeltakerDAO{
-//    ObjectMapper mapper = new ObjectMapper();
     JSONObject jsonObject = new JSONObject();
     String fileName = "./src/main/webapp/storage/test.json";
 

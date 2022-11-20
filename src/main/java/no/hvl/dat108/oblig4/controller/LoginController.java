@@ -48,8 +48,7 @@ public class LoginController {
                            @RequestParam(name = "mobil") String mobil,
                            @RequestParam(name = "passord") String passord) {
         Deltager d = dao.get(mobil);
-        if (!(PassordUtil.validerMedSalt(passord, d.getPassordSalt(), d.getPassordHash()
-        ))){
+        if (!(PassordUtil.validerMedSalt(passord, d.getPassordSalt(), d.getPassordHash()))){
             ra.addFlashAttribute("invalidPassword", invalidPasswordMsg);
             return "redirect:" + loginURL;
         }

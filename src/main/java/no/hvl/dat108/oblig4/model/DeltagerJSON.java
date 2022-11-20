@@ -1,11 +1,16 @@
 package no.hvl.dat108.oblig4.model;
 
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.*;
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class DeltagerJSON implements DeltakerDAO{
@@ -26,14 +31,13 @@ public class DeltagerJSON implements DeltakerDAO{
                 return null;
             }
             reader.close();
-//            System.out.println(jsonObject);
-//            System.out.println(array);
 
             Deltager deltaker = null;
+
             Iterator<JSONObject> iterator = array.iterator();
             while (deltaker == null && iterator.hasNext()){
                 Deltager c = getDeltagerJSON(iterator.next());
-                if (c.getMobil() == mobil){
+                if (Objects.equals(c.getMobil(), mobil)){
                     deltaker = c;
                 }
             }
@@ -83,7 +87,7 @@ public class DeltagerJSON implements DeltakerDAO{
     public void save(Deltager deltager) {
         JSONParser parser = new JSONParser();
         checkIfJSON();
-        if (deltager == get(deltager.getMobil())){
+        if (get(deltager.getMobil()) != null){
             return;
         }
 
@@ -96,10 +100,7 @@ public class DeltagerJSON implements DeltakerDAO{
             }
             reader.close();
 
-            JSONObject jsonDeltager = new JSONObject();
-            jsonDeltager.put(deltager.getMobil(),setDeltakerJSON(deltager));
-
-            array.add(jsonDeltager);
+            array.add(setDeltakerJSON(deltager));
             jsonObject = new JSONObject();
 
             jsonObject.put("deltagere", array);
@@ -115,6 +116,9 @@ public class DeltagerJSON implements DeltakerDAO{
 
     private JSONObject setDeltakerJSON(Deltager deltager){
         JSONObject delt = new JSONObject();
+
+//        System.out.println("Set");
+
         delt.put("fornavn", deltager.getFornavn());
         delt.put("etternavn", deltager.getEtternavn());
         delt.put("Kjonn", deltager.getKjonn());
@@ -123,40 +127,19 @@ public class DeltagerJSON implements DeltakerDAO{
         delt.put("salt", deltager.getPassordSalt());
 
         return delt;
-
-//        JSONObject fnavn = new JSONObject();
-//        JSONObject enavn = new JSONObject();
-//        JSONObject kjonn = new JSONObject();
-//        JSONObject mob = new JSONObject();
-//        JSONObject hash = new JSONObject();
-//        JSONObject salt = new JSONObject();
-//
-//        fnavn.put("fornavn", deltager.getFornavn());
-//        enavn.put("etternavn", deltager.getEtternavn());
-//        kjonn.put("Kjonn", deltager.getKjonn());
-//        mob.put("Mobil", deltager.getMobil());
-//        hash.put("hash", deltager.getPassordHash());
-//        salt.put("salt", deltager.getPassordSalt());
-//
-//        JSONArray array = new JSONArray();
-//        array.add(fnavn);
-//        array.add(enavn);
-//        array.add(kjonn);
-//        array.add(mob);
-//        array.add(hash);
-//        array.add(salt);
-//        return array;
     }
 
-    private Deltager getDeltagerJSON(JSONObject jo){
+    private Deltager getDeltagerJSON(JSONObject jo) {
         Deltager deltager = new Deltager();
 
-        deltager.setFornavn(jo.get("fornavn").toString());
-        deltager.setEtternavn(jo.get("etternavn").toString());
-        deltager.setKjonn(jo.get("kjonn").toString());
-        deltager.setMobil(jo.get("mobil").toString());
-        deltager.setPassordSalt(jo.get("salt").toString());
-        deltager.setPassordHash(jo.get("hash").toString());
+        deltager.setFornavn(jo.values().toArray()[4].toString());
+        deltager.setEtternavn(jo.values().toArray()[2].toString());
+        deltager.setKjonn(jo.values().toArray()[0].toString());
+        deltager.setMobil(jo.values().toArray()[1].toString());
+        deltager.setPassordSalt(jo.values().toArray()[3].toString());
+        deltager.setPassordHash(jo.values().toArray()[5].toString());
+
+//        System.out.println(deltager);
 
         return deltager;
     }

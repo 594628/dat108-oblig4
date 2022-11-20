@@ -38,16 +38,17 @@ public class LagreDeltagerTest {
 
     @Test
     void testGet(){
-        assertEquals(deltakerDAO.get(mob), deltager);
+        System.out.println("Getter: " + deltakerDAO.get(mob) + " Comparer: " + deltager);
+        assertEquals(deltakerDAO.get(mob).toString(), deltager.toString());
     }
 
-//    @Test
-//    void testGetAll(){
-//        List<Deltager> dl = new ArrayList<Deltager>();
-//        dl.add(deltager);
-//        dl.add(deltager2);
-//        dl.add(deltager3);
-//
-//        assertEquals(deltakerDAO.getAll(), dl);
-//    }
+    @Test
+    void testGetAll(){
+        List<Deltager> dl = new ArrayList<Deltager>();
+        dl.add(deltager);
+        dl.add(deltager2);
+        dl.add(deltager3);
+
+        assertEquals(deltakerDAO.getAll().toString(), dl.toString());
+    }
 }

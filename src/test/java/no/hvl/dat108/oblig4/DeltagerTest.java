@@ -27,6 +27,7 @@ class DeltagerTest {
 
     @Test
     void testToString() {
+        assertEquals(deltager.toString(), "Deltager Per Pettersen er nå registrert med mobilnummer 80080800.");
     }
 
     @Test

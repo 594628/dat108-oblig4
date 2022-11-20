@@ -16,7 +16,7 @@ import java.util.*;
 public class DeltagerJSON implements DeltakerDAO{
 //    ObjectMapper mapper = new ObjectMapper();
     JSONObject jsonObject = new JSONObject();
-    String fileName = "./test.json";
+    String fileName = "./src/main/webapp/storage/test.json";
 
     @Override
     public Deltager get(String mobil) {

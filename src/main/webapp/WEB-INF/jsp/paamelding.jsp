@@ -14,8 +14,10 @@
 
 <body>
 	<h2>Påmelding</h2>
-	
-	<form id="deltagerFormBean" action="http://localhost:8080/paamelding" method="post">
+
+	<c:out value="${error}"/>
+
+	<form:form id="deltagerFormBean" action="registerUser" method="post">
 		<fieldset>
 		
 			<label for="fornavn">Fornavn</label>
@@ -35,9 +37,9 @@
             <label for="passord">Passord</label> 
             <input id="passord" name="passord" title="..." pattern=".*" placeholder="Velg et passord" type="password" required="required" value="">
             
-            
+            <c:out value="${noPassMatch}"/>
             <label for="passordRepetert">Passord repetert</label> 
-            <input id="passordRepetert" name="passordRepetert" title="..." pattern=".*" placeholder="Gjenta passord" type="password" required="required" value="">
+            <input id="passordRepetert" name="passordRep" title="..." pattern=".*" placeholder="Gjenta passord" type="password" required="required" value="">
             
             
 <%--			<label for="kjonn">Kjønn:</label> --%>
@@ -64,7 +66,7 @@
 			     
 			<br><br><p><input type="submit" value="registerUser"></p>
 		</fieldset>
-	</form>
+	</form:form>
 
 
 </body></html>

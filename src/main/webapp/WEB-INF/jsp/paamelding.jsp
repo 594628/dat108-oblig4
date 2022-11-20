@@ -15,6 +15,9 @@
 <body>
 
 <h2>Påmelding</h2>
+
+<c:out value="error"/>
+
 <form:form action="registerUser" method="post" class="pure-form pure-form-aligned" >
 	<fieldset>
 		<div class="pure-control-group">

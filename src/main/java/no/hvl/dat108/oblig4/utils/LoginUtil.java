@@ -15,6 +15,16 @@ public class LoginUtil {
         isLoggedIn = false;
     }
 
+    public static void loginUser(HttpServletRequest request){
+        logoutUser(request.getSession());
+
+        HttpSession session = request.getSession();
+        session.setMaxInactiveInterval(MAX_INTERACTIVE_INTERVAL);
+//        session.setAttribute("handleliste", new Handleliste());
+
+        isLoggedIn = true;
+    }
+
     public static void loginUser(HttpServletRequest request, Deltager d){
         logoutUser(request.getSession());
 

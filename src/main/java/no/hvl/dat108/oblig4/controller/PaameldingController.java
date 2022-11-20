@@ -53,7 +53,7 @@ public class PaameldingController {
     }
 
     @PostMapping("registerUser")
-    public String registerUser(@Valid @ModelAttribute("deltager") Model model,
+    public String registerUser(Model model,
                                BindingResult bindingResult, RedirectAttributes ra, HttpServletRequest request,
                                @RequestParam(name = "fornavn") String fornavn,
                                @RequestParam(name = "etternavn") String etternavn,

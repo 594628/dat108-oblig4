@@ -15,6 +15,11 @@
 		  ${deltager.mobil}<br>
 
 	</p>
-	<a href="http://localhost:8080/deltagerliste">Gå til deltagerlisten</a>
-
-</body></html>
+	<form:form action="deltagerliste" method="get">
+		<fieldset>
+			<input type="hidden" name="hiddenLogout" value="hiddenLogout"/>
+			<p><input type="submit" value="Gå til deltagerliste" /></p>
+		</fieldset>
+	</form:form>
+</body>
+</html>

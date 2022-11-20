@@ -14,15 +14,15 @@
 <body>
 <h2>Logg inn</h2>
 <%--<p style="color:red;"></p>--%>
-<form method="post">
+<form:form action="login" method="post">
     <fieldset>
 <%--        <label for="mobil">--%>
             Mobil:</label> <input type="text" name="mobil" placeholder="mobil">
 <%--        <label for="passord">--%>
             Passord:</label> <input type="password" name="passord" placeholder="passord">
-        <br><br><button type="submit">Logg inn</button>
+        <br><br><button type="submit" value="Login">Logg inn</button>
     </fieldset>
-</form>
+</form:form>
 
 
 </body>

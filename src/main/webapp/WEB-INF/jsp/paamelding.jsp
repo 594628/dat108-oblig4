@@ -8,63 +8,51 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link href="./css/simple.css" rel="stylesheet" type="text/css">
-	<script src="./js/validation.js" defer></script>
+	<script src="PaameldingScript.js"></script>
 	<title>Påmelding</title>
 </head>
 
 <body>
-	<h2>Påmelding</h2>
-	
-	<form id="deltagerFormBean" action="http://localhost:8080/paamelding" method="post">
-		<fieldset>
-		
-			<label for="fornavn">Fornavn</label>
-			<!-- NB! Spring sin (form:input)-tag støtter ikke required alene, 
-			     men greit med required="noe"! -->
-			<input id="fornavn" name="fornavn" title="..." pattern=".*" placeholder="Fyll inn fornavn" required="required" type="text" value="">
-            
-            
-            <label for="etternavn">Etternavn</label> 
-            <input id="etternavn" name="etternavn" title="..." pattern=".*" placeholder="Fyll inn etternavn" required="required" type="text" value="">
-            
-            
-            <label for="mobil">Mobil (8 siffer)</label>  
-            <input id="mobil" name="mobil" title="..." pattern=".*" placeholder="Fyll inn telefonnummer" required="required" type="text" value="">
-            
-
-            <label for="passord">Passord</label> 
-            <input id="passord" name="passord" title="..." pattern=".*" placeholder="Velg et passord" type="password" required="required" value="">
-            
-            
-            <label for="passordRepetert">Passord repetert</label> 
-            <input id="passordRepetert" name="passordRepetert" title="..." pattern=".*" placeholder="Gjenta passord" type="password" required="required" value="">
-            
-            
-<%--			<label for="kjonn">Kjønn:</label> --%>
-<%--			<input id="kjonn1" name="kjonn" checked="checked" type="radio" value="mann">mann--%>
-<%--			<input id="kjonn2" name="kjonn" type="radio" value="kvinne">kvinne--%>
-
-			<p>Kjønn: </p>
-			<label for="man">Mann
-			<input type="radio" id="man" name="gender" value="Mann"/>
-			<span></span>
-			</label>
-
-			<label for="woman">Kvinne
-			<input type="radio" id="woman" name="gender" value="Kvinne"/>
-			<span></span>
-			</label>
-<%--			</p>--%>
-
-<%--			<input type="radio" id="male" name="gender" value="M"/>--%>
-<%--			<label for="male"><span></span>Male</label>--%>
-
-<%--			<input type="radio" id="female" name="gender" value="F"/>--%>
-<%--			<label for="female"><span></span>Female</label>--%>
-			     
-			<br><br><p><input type="submit" value="registerUser"></p>
-		</fieldset>
-	</form>
-
-
-</body></html>
+<h2>Påmelding</h2>
+<form:form action="registerUser" method="post" class="pure-form pure-form-aligned" >
+	<fieldset>
+		<div class="pure-control-group">
+			<label for="fornavn">Fornavn:</label> <input type="text"
+														 name="fornavn" id="fornavn" value="${skjema.fornavn}"
+														 onkeyup="fornavnSjekk()" /> <font color="red" id="fn">${skjema.fornavnFeilmelding}</font>
+		</div>
+		<div class="pure-control-group">
+			<label for="etternavn">Etternavn:</label> <input type="text"
+															 name="etternavn" id="etternavn" value="${skjema.etternavn}"
+															 onkeyup="etternavnSjekk()" /> <font color="red" id="en">${skjema.etternavnFeilmelding}</font>
+		</div>
+		<div class="pure-control-group">
+			<label for="mobil">Mobil (8 siffer):</label> <input type="text"
+																name="mobil" id="mobil" value="${skjema.telefon}"
+																onkeyup="mobilSjekk()" /> <font id="mob" color="red">${skjema.telefonFeilmelding}</font>
+		</div>
+		<div class="pure-control-group">
+			<label for="passord">Passord:</label> <input type="password"
+														  name="passord" id="passord" value="${skjema.passord}"
+														  onkeyup="passordSjekk()" /> <font id="pass" color="red">${skjema.passordFeilmelding}</font>
+		</div>
+		<div class="pure-control-group">
+			<label for="passordRep">Repeter Passord:</label> <input
+				type="password" id="passordRep" name="passordRepetert"
+				value="${skjema.passordKopi}" onkeyup="passordRepSjekk()" /> <font
+				color="red" id="passRep">${skjema.passordKopiFeilmelding}</font>
+		</div>
+		<div class="pure-control-group">
+			<label for="kjonn">Kjønn:</label> <input type="radio" name="kjonn" id="kjonn"
+													 value="mann" ${skjema.kjonn.equals("mann") ? "checked" : ""} />mann
+			<input type="radio" name="kjonn" value="kvinne"
+			${skjema.kjonn.equals("kvinne") ? "checked" : ""} />kvinne
+			<font color="red">${skjema.kjonnFeilmelding}</font>
+		</div>
+		<div class="pure-controls">
+			<button type="submit" value="Meld på">Meld på</button>
+		</div>
+	</fieldset>
+</form:form>
+</body>
+</html>

@@ -124,5 +124,12 @@ public class Deltager {
         this.mobil = mobil;
     }
 
+    public boolean erMann(){
+        return kjonn.equals("m") || kjonn.equalsIgnoreCase("M");
+    }
+
+    public boolean erKvinne(){
+        return kjonn.equals("k") || kjonn.equalsIgnoreCase("K");
+    }
 
 }

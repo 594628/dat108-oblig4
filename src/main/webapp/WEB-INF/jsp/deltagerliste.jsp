@@ -12,63 +12,40 @@
 	<title>Deltagerliste</title>
 </head>
 <body>
-    <p>Innlogget som: 12345676 / Pål Olsen</p>
-	<h2>Deltagerliste</h2>
-	<table>
-		<tbody><tr>
-			<th>Kjønn</th>
-			<th align="left">Navn</th>
-			<th align="left">Mobil</th>
-		</tr>
-
-		
-            <tr style="">
-				<td align="center">♀</td>
-				<td>Anne Panne</td>
-				<td>234 56 789</td>
-			</tr>
-		
-            <tr style="">
-				<td align="center">♂</td>
-				<td>Arne Arnesen</td>
-				<td>901 23 456</td>
-			</tr>
-		
-            <tr style="">
-				<td align="center">♂</td>
-				<td>Arne Arnesen</td>
-				<td>901 23 455</td>
-			</tr>
-		
-            <tr style="">
-				<td align="center">♂</td>
-				<td>Lars-Petter Helland</td>
-				<td>123 45 678</td>
-			</tr>
-		
-            <tr style="">
-				<td align="center">♂</td>
-				<td>Per Viskelær</td>
-				<td>345 34 534</td>
-			</tr>
-		
-            <tr style="background-color:#aaffaa;">
-				<td align="center">♂</td>
-				<td>Pål Olsen</td>
-				<td>123 45 676</td>
-			</tr>
-		
-            <tr style="">
-				<td align="center">♀</td>
-				<td>Xx-x Xxx</td>
-				<td>123 21 378</td>
-			</tr>
-		
-
-	</tbody></table>
-	<br>
-	<form action="http://localhost:8080/utlogging" method="post">
-	   <button type="submit">Logg ut</button> 
-	</form>
-
-</body></html>
+<h2>Deltagerliste</h2>
+<table class="pure-table">
+	<tr bgcolor="#cccccc">
+		<th>Kjønn</th>
+		<th align="left">Navn</th>
+		<th align="left">Mobil</th>
+	</tr>
+	<tbody>
+	<c:forEach items="${deltagerliste}" var="deltager">
+		<c:choose>
+			<c:when test="${deltager.mobilnr.equals(deltager.mobilnr)}">
+				<tr bgcolor="#aaffaa">
+					<td align="center">${deltager.kjonn.equals("k") ? "&#9792" : "&#9794"}</td>
+					<td>${deltager.fornavn}, ${deltager.etternavn}</td>
+					<td>${deltager.mobilnr}</td>
+				</tr>
+			</c:when>
+			<c:otherwise>
+				<tr bgcolor="#ffffff">
+					<td align="center">${deltager.kjonn.equals("k") ? "&#9792" : "&#9794"}</td>
+					<td>${deltager.fornavn}, ${deltager.etternavn}</td>
+					<td>${deltager.mobilnr}</td>
+				</tr>
+			</c:otherwise>
+		</c:choose>
+	</c:forEach>
+	</tbody>
+</table>
+<br/>
+<form:form action="logout" method="get">
+	<fieldset>
+		<input type="hidden" name="hiddenLogout" value="hiddenLogout"/>
+		<p><input type="submit" value="Logg ut" /></p>
+	</fieldset>
+</form:form>
+</body>
+</html>
